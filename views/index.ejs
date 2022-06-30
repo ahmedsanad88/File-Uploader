@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>upload file app</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!-- Part of using the ejs to evaluate the following code on the server not in the client -->
+    <% if(locals.fileLink != null) { %>
+    <div class="box shadow">
+      <div>Your file is uploaded Successfully.🎉🎉🎉</div>
+      <div>Save your link for further Download.</div>
+      <a href="<%= locals.fileLink %>">Go to download page</a>
+    </div>
+    <% } %>
+
+    <!-- multipart/form-data ==> Multiple form data mean parts of the files used when you dealing with file upload. -->
+    <form
+      action="/upload"
+      method="post"
+      class="form shadow"
+      enctype="multipart/form-data"
+    >
+      <label for="file">File:</label>
+      <input type="file" id="file" name="file" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" />
+      <button class="btn" type="submit">Share</button>
+    </form>
+  </body>
+</html>
